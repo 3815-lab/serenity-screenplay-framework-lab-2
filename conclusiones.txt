@@ -1,0 +1,20 @@
+# Conclusiones del Ejercicio PetStore API
+
+## Resumen
+Se ha automatizado el ciclo de vida de una mascota en la tienda utilizando Karate DSL y Java. El flujo automatizado cubre:
+1. Creación de una mascota.
+2. Consulta de la mascota por ID.
+3. Actualización de nombre y estado a "sold".
+4. Verificación de la actualización mediante búsqueda por estado.
+
+## Hallazgos y Decisiones Técnicas
+1. **Separación de Responsabilidades**: Se estructuró el proyecto utilizando paquetes claros (`features`, `runners`, `utils`, `data`) bajo `com.sofka.petstore`. Esto mejora la mantenibilidad y escalabilidad del código.
+2. **Generación Dinámica de Datos**: Se implementó la clase `PetDataGenerator` para crear datos aleatorios (IDs, nombres) en cada ejecución. Esto evita fallos por duplicidad de datos y simula mejor un entorno real.
+3. **Reutilización de Código**: Se utilizaron templates JSON (`pet_request.json`) para mantener los payloads limpios y legibles, evitando "strings quemados" dentro de los archivos .feature.
+4. **Validaciones Robustas**: Se añadieron aserciones (matchers) en cada paso para asegurar que la respuesta del API corresponda exactamente a los datos enviados y esperados.
+
+## Calidad de Software
+Para asegurar un código mantenible y escalable, se aplicaron las siguientes prácticas:
+- **Modularidad**: Estructura clara por paquetes.
+- **Data Driven**: Uso de generadores de datos para evitar hardcoding.
+- **Legibilidad**: Nombres de variables claros y estructura de test intuitiva.
