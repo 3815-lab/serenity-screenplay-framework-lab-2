@@ -20,3 +20,8 @@ mvn test -Dtest=PetStoreTestRunner
 ```
 
 El reporte de ejecución se generará en: `target/karate-reports/karate-summary.html`
+
+## Integración Continua (CI)
+Este proyecto cuenta con un flujo de trabajo de GitHub Actions configurado en `.github/workflows/maven.yml`.
+- **Disparador**: Se ejecuta automáticamente en cada `push` o `pull_request` a la rama `master`.
+- **Acción**: Configura el entorno Java 17 y ejecuta los tests automatizados con Maven.
