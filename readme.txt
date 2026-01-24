@@ -1,27 +1,42 @@
-# Automatización API PetStore
+AUTOMATIZACION API PETSTORE - EJERCICIO 2
+=========================================
 
-Este proyecto contiene las pruebas automatizadas para la API de PetStore (Ejercicio 2).
+DESCRIPCION GENERAL
+-------------------
+Este proyecto consiste en pruebas automatizadas para la API de "PetStore" (https://petstore.swagger.io/). La implementación utiliza el framework Karate DSL con Java, permitiendo validar completitud el ciclo de vida de una mascota: creación, consulta, actualización y búsqueda.
 
-## Prerrequisitos
-- Java 17
-- Maven
+PRERREQUISITOS
+--------------
+Para ejecutar este proyecto, asegúrese de tener instalado:
+- Java 17 o superior.
+- Maven 3.8 o superior.
 
-## Estructura del Proyecto
-- `src/test/java/com/sofka/petstore/features`: Contiene los archivos Feature de Karate.
-- `src/test/java/com/sofka/petstore/runners`: Contiene el ejecutor de pruebas (Runner) de JUnit 5.
-- `src/test/java/com/sofka/petstore/utils`: Contiene clases auxiliares de Java para la generación de datos.
-- `src/test/java/com/sofka/petstore/data`: Contiene plantillas JSON para las peticiones.
+INSTRUCCIONES DE EJECUCION (PASO A PASO)
+----------------------------------------
 
-## Cómo Ejecutar
-Para ejecutar la prueba específica del ejercicio PetStore, ejecuta el siguiente comando en la terminal:
+1. Clonar o descargar el proyecto:
+   Asegúrese de estar en la carpeta raíz del proyecto (donde se encuentra el archivo pom.xml).
 
-```bash
-mvn test -Dtest=PetStoreTestRunner
-```
+2. Abrir una terminal:
+   Ubíquese en la ruta del proyecto.
 
-El reporte de ejecución se generará en: `target/karate-reports/karate-summary.html`
+3. Ejecutar las pruebas:
+   Corra el siguiente comando para ejecutar el runner específico del ejercicio:
+   
+   mvn test -Dtest=PetStoreTestRunner
+   
+4. Ver los reportes:
+   Una vez finalizada la ejecución, Karate genera un reporte detallado en HTML. Puede encontrarlo en:
+   target/karate-reports/karate-summary.html
 
-## Integración Continua (CI)
-Este proyecto cuenta con un flujo de trabajo de GitHub Actions configurado en `.github/workflows/maven.yml`.
-- **Disparador**: Se ejecuta automáticamente en cada `push` o `pull_request` a la rama `master`.
-- **Acción**: Configura el entorno Java 17 y ejecuta los tests automatizados con Maven.
+5. Integración Continua (CI):
+   Este proyecto cuenta con una pipeline de GitHub Actions configurada (.github/workflows/maven.yml). 
+   - Ejecución automática: Los tests se ejecutan automáticamente en cada push o pull_request a la rama master.
+   - Artefactos: Los reportes de Karate se cargan automáticamente como artefactos del build ("karate-reports") y se retienen por 5 días.
+
+DECISIONES DE ARQUITECTURA
+--------------------------
+- Karate DSL: Se eligió por su simplicidad para pruebas de API y su capacidad de combinar testing y assertions en un solo archivo.
+- Generación Dinámica de Datos: Se implementó la clase `PetDataGenerator` para evitar conflictos de datos (IDs duplicados), simulando un entorno más real y robusto.
+- Templates JSON: Se externalizaron los cuerpos de las peticiones (`pet_request.json`) para mantener los archivos `.feature` limpios y legibles.
+- Modularidad: El código está organizado en paquetes (`features`, `runners`, `utils`, `data`) facilitando la mantenibilidad.
