@@ -6,6 +6,6 @@ class PetStoreTestRunner {
 
     @Karate.Test
     Karate testPetStore() {
-        return Karate.run("classpath:com/sofka/petstore/features/pet_workflow.feature").relativeTo(getClass());
+        return Karate.run("classpath:com/sofka/petstore/features").relativeTo(getClass());
     }
 }

@@ -37,6 +37,8 @@ INSTRUCCIONES DE EJECUCION (PASO A PASO)
 DECISIONES DE ARQUITECTURA
 --------------------------
 - Karate DSL: Se eligió por su simplicidad para pruebas de API y su capacidad de combinar testing y assertions en un solo archivo.
-- Generación Dinámica de Datos: Se implementó la clase `PetDataGenerator` para evitar conflictos de datos (IDs duplicados), simulando un entorno más real y robusto.
+- Data-Driven Testing (DDT): Se integró el uso de datasets externos (archivos CSV) mediante `Scenario Outline`, permitiendo validar múltiples variaciones positivas y de borde sin duplicar código.
+- Escenarios Negativos: Se expandió la cobertura para validar respuestas de error (e.g., 404 Not Found), asegurando que el API se comporte de manera resiliente ante datos inexistentes.
+- Generación Dinámica de Datos: Se mantiene el uso de `PetDataGenerator` para flujos dinámicos, complementando las pruebas estáticas por datos.
 - Templates JSON: Se externalizaron los cuerpos de las peticiones (`pet_request.json`) para mantener los archivos `.feature` limpios y legibles.
 - Modularidad: El código está organizado en paquetes (`features`, `runners`, `utils`, `data`) facilitando la mantenibilidad.

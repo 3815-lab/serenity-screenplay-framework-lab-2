@@ -16,5 +16,7 @@ Se ha automatizado el ciclo de vida de una mascota en la tienda utilizando Karat
 ## Calidad de Software
 Para asegurar un código mantenible y escalable, se aplicaron las siguientes prácticas:
 - **Modularidad**: Estructura clara por paquetes.
-- **Data Driven**: Uso de generadores de datos para evitar hardcoding.
+- **Data Driven Testing (DDT)**: Implementación de `Scenario Outline` consumiendo archivos CSV externos para validar múltiples variaciones del flujo.
+- **Pruebas Negativas**: Incorporación de aserciones para casos de error (e.g., búsqueda de recursos inexistentes), aumentando la resiliencia y cobertura semántica.
+- **Generación Dinámica**: Uso de generadores de datos para evitar hardcoding y conflictos.
 - **Legibilidad**: Nombres de variables claros y estructura de test intuitiva.

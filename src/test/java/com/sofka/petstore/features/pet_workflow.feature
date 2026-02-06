@@ -49,3 +49,9 @@ Feature: PetStore Workflow
     And match found[0].id == petId
     And match found[0].status == 'sold'
     And match found[0].name == newName
+
+  Scenario: Verify error response for non-existent pet ID
+    Given path 'pet', 0
+    When method get
+    Then status 404
+    And match response.message == 'Pet not found'
